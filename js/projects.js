@@ -1,9 +1,23 @@
 /* ============================================ */
-/* PROJECT DATA - portfolios.js                */
+/* PROJECT DATA - projects.js                  */
 /* ============================================ */
 
-// Add, modify, or remove projects here
-// For videoEmbed, you can put an iframe (like Vimeo/Youtube) or an HTML5 <video> tag
+/**
+ * LOCAL PROJECTS ARRAY
+ * 
+ * This is the fallback/default project data.
+ * If you want to use Google Sheets instead, enable it in js/sheets-importer.js
+ * 
+ * Projects can have:
+ * - id: unique identifier
+ * - title: project name
+ * - category: project category/type
+ * - thumbnail: image URL for grid preview
+ * - description: detailed description
+ * - tools: array of tool names used
+ * - mediaHTML: HTML for the modal (img tag or video tag)
+ */
+
 const PROJECTS = [
     {
         id: 'p1',

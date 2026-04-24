@@ -147,13 +147,27 @@ function initializeLottie() {
 async function startApp() {
     console.log('🚀 Starting Portfolio App...');
     
-    // Wait for projects to load from Google Sheets (or local fallback)
-    // initializeProjects is defined in sheets-importer.js
-    if (typeof initializeProjects !== 'undefined') {
-        console.log('📦 Initializing projects...');
-        await initializeProjects();
+    // Initialize all content from Google Sheets (or local fallback)
+    // initializeAllContent is defined in content-importer.js
+    if (typeof initializeAllContent !== 'undefined') {
+        console.log('📦 Initializing content...');
+        await initializeAllContent();
     } else {
-        console.warn('⚠️ initializeProjects not found, using local PROJECTS');
+        console.warn('⚠️ initializeAllContent not found');
+    }
+
+    // Update content sections from the loaded data
+    if (typeof updateAllContent !== 'undefined') {
+        console.log('📝 Updating content sections...');
+        await updateAllContent();
+    }
+    
+    // Handle projects from CONTENT or local fallback
+    if (window.CONTENT?.projects && window.CONTENT.projects.length > 0) {
+        window.PROJECTS = window.CONTENT.projects;
+    } else if (typeof PROJECTS === 'undefined' || PROJECTS.length === 0) {
+        console.warn('⚠️ No projects found!');
+        window.PROJECTS = [];
     }
     
     const projectsToRender = window.PROJECTS || PROJECTS;

@@ -1,0 +1,124 @@
+/* ============================================ */
+/* MAIN STYLES - Portfolio 2026                */
+/* ============================================ */
+
+body {
+    background-color: #050505;
+    color: #ffffff;
+    overflow-x: hidden;
+    cursor: none; /* Hide default cursor for custom one */
+}
+
+/* ============================================ */
+/* CUSTOM CURSOR */
+/* ============================================ */
+#cursor, #cursor-follower {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    border-radius: 50%;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+}
+
+#cursor {
+    width: 8px;
+    height: 8px;
+    background-color: #c0ff00;
+    transition: width 0.2s, height 0.2s;
+}
+
+#cursor-follower {
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(192, 255, 0, 0.5);
+    transition: transform 0.15s ease-out, width 0.2s, height 0.2s, background-color 0.2s;
+}
+
+body:hover #cursor {
+    opacity: 1;
+}
+
+.hover-target:hover ~ #cursor {
+    transform: scale(0);
+}
+
+.hover-target:hover ~ #cursor-follower {
+    width: 60px;
+    height: 60px;
+    background-color: rgba(192, 255, 0, 0.1);
+    border-color: #c0ff00;
+}
+
+/* ============================================ */
+/* SCROLL REVEAL ANIMATION */
+/* ============================================ */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ============================================ */
+/* PROJECT IMAGE HOVER */
+/* ============================================ */
+.project-img-wrapper {
+    overflow: hidden;
+}
+
+.project-img {
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
+    filter: grayscale(100%) brightness(0.8);
+}
+
+.project-card:hover .project-img {
+    transform: scale(1.05);
+    filter: grayscale(0%) brightness(1);
+}
+
+/* ============================================ */
+/* MODAL TRANSITIONS */
+/* ============================================ */
+#project-modal {
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+#project-modal .modal-content {
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(100%);
+}
+
+#project-modal.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+#project-modal.open .modal-content {
+    transform: translateY(0);
+}
+
+/* ============================================ */
+/* SCROLLBAR STYLING */
+/* ============================================ */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #050505;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #c0ff00;
+}

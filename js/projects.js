@@ -6,7 +6,7 @@
  * LOCAL PROJECTS ARRAY
  * 
  * This is the fallback/default project data.
- * If you want to use Google Sheets instead, enable it in js/sheets-importer.js
+ * If you want to use Google Sheets instead, enable it in js/content-importer.js
  * 
  * Projects can have:
  * - id: unique identifier

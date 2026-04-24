@@ -30,7 +30,7 @@ const SHEET_CONFIG = {
     
     // Set to true to use Google Sheets as primary source
     // Set to false to use local projects array
-    useGoogleSheets: true
+    useGoogleSheets: false
 };
 
 /**

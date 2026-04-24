@@ -8,7 +8,7 @@
 function renderProjects() {
     const grid = document.getElementById('projects-grid');
     
-    // Use window.PROJECTS to ensure we get the updated version from sheets-importer
+    // Use window.PROJECTS to ensure we get the updated version from content-importer
     const projectsToRender = window.PROJECTS || PROJECTS;
     
     console.log(`📊 renderProjects: rendering ${projectsToRender.length} projects`);

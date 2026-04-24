@@ -1,4 +1,12 @@
-# Content Sections Setup - Hero, About, Contact
+# ⚠️ DEPRECATED - See GOOGLE_SHEETS_INTEGRATION.md
+
+**This documentation is outdated. Use [GOOGLE_SHEETS_INTEGRATION.md](GOOGLE_SHEETS_INTEGRATION.md) instead.**
+
+This file describes the old setup for content sections. Everything is now consolidated in the main integration guide.
+
+---
+
+# Content Sections Setup (Old - Deprecated)
 
 Your portfolio can now pull content for the Hero, About, and Contact sections directly from Google Sheets! This allows you to update text, links, and images without touching any code.
 

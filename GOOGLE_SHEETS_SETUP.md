@@ -1,4 +1,12 @@
-# Google Sheets Integration Setup Guide
+# ⚠️ DEPRECATED - See GOOGLE_SHEETS_INTEGRATION.md
+
+**This documentation is outdated. Use [GOOGLE_SHEETS_INTEGRATION.md](GOOGLE_SHEETS_INTEGRATION.md) instead.**
+
+This file describes the old setup. It's been replaced with a consolidated approach that covers Projects, Hero, About, and Contact in one guide.
+
+---
+
+# Google Sheets Integration Setup Guide (Old - Deprecated)
 
 ## Overview
 Your portfolio can now pull project data directly from a Google Sheet! This means you can add new projects without touching any code—just add a row to your spreadsheet.

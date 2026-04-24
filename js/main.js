@@ -8,7 +8,12 @@
 function renderProjects() {
     const grid = document.getElementById('projects-grid');
     
-    PROJECTS.forEach((proj, index) => {
+    // Use window.PROJECTS to ensure we get the updated version from sheets-importer
+    const projectsToRender = window.PROJECTS || PROJECTS;
+    
+    console.log(`📊 renderProjects: rendering ${projectsToRender.length} projects`);
+    
+    projectsToRender.forEach((proj, index) => {
         const offsetClass = index % 2 !== 0 ? 'md:mt-16' : '';
         
         const cardHTML = `
@@ -47,7 +52,8 @@ const mTools = document.getElementById('modal-tools');
 const mMedia = document.getElementById('modal-media-container');
 
 function openModal(projectId) {
-    const proj = PROJECTS.find(p => p.id === projectId);
+    const projectsToSearch = window.PROJECTS || PROJECTS;
+    const proj = projectsToSearch.find(p => p.id === projectId);
     if (!proj) return;
 
     mTitle.innerText = proj.title;
@@ -80,22 +86,18 @@ function initializeCursor() {
     const cursor = document.getElementById('cursor');
     const follower = document.getElementById('cursor-follower');
     let mouseX = 0, mouseY = 0;
-    let followerX = 0, followerY = 0;
 
     document.addEventListener('mousemove', (e) => {
         mouseX = e.clientX;
         mouseY = e.clientY;
+        
+        // Move both cursor dot and ring instantly
         cursor.style.left = mouseX + 'px';
         cursor.style.top = mouseY + 'px';
+        
+        follower.style.left = mouseX + 'px';
+        follower.style.top = mouseY + 'px';
     });
-
-    function animateCursor() {
-        followerX += (mouseX - followerX) * 0.15;
-        followerY += (mouseY - followerY) * 0.15;
-        follower.style.transform = `translate(${followerX}px, ${followerY}px) translate(-50%, -50%)`;
-        requestAnimationFrame(animateCursor);
-    }
-    animateCursor();
 }
 
 // ---------------------------------------------------------
@@ -142,9 +144,28 @@ function initializeLottie() {
 // ---------------------------------------------------------
 // 6. INITIALIZATION ON DOM READY
 // ---------------------------------------------------------
-document.addEventListener('DOMContentLoaded', () => {
+async function startApp() {
+    console.log('🚀 Starting Portfolio App...');
+    
+    // Wait for projects to load from Google Sheets (or local fallback)
+    // initializeProjects is defined in sheets-importer.js
+    if (typeof initializeProjects !== 'undefined') {
+        console.log('📦 Initializing projects...');
+        await initializeProjects();
+    } else {
+        console.warn('⚠️ initializeProjects not found, using local PROJECTS');
+    }
+    
+    const projectsToRender = window.PROJECTS || PROJECTS;
+    console.log(`✨ Rendering ${projectsToRender.length} projects...`);
+    
+    // Now render the projects
     renderProjects();
     initializeCursor();
     initializeScrollReveal();
     initializeLottie();
-});
+    
+    console.log('✅ Portfolio App Ready!');
+}
+
+document.addEventListener('DOMContentLoaded', startApp);

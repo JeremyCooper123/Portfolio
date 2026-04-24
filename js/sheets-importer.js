@@ -173,9 +173,14 @@ function parseCSVLine(line) {
 async function initializeProjects() {
     let projectsData = null;
 
+    console.log('📋 initializeProjects called');
+
     // Try to fetch from Google Sheets if enabled
     if (SHEET_CONFIG.useGoogleSheets) {
+        console.log('🌐 Google Sheets enabled, attempting to fetch...');
         projectsData = await fetchProjectsFromSheets();
+    } else {
+        console.log('⚙️ Google Sheets disabled in config');
     }
 
     // If Google Sheets failed or is disabled, use local projects
@@ -191,13 +196,10 @@ async function initializeProjects() {
 
     // Replace global PROJECTS array with the loaded data
     window.PROJECTS = projectsData;
+    console.log(`✅ PROJECTS array updated with ${projectsData.length} projects`);
 
     return projectsData;
 }
 
-// Auto-initialize on page load
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initializeProjects);
-} else {
-    initializeProjects();
-}
+// Don't auto-initialize here - let main.js handle it
+// This just exports the initializeProjects function

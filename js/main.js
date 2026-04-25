@@ -59,7 +59,7 @@ function openModal(projectId) {
     mTitle.innerText = proj.title;
     mCat.innerText = proj.category;
     mDesc.innerText = proj.description;
-    mMedia.innerHTML = proj.mediaHTML;
+    mMedia.innerHTML = `<iframe src="${proj.mediaHTML}" frameborder="0" class="w-full h-full object-cover"></iframe>`;
     
     mTools.innerHTML = '';
     proj.tools.forEach(tool => {

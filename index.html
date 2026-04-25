@@ -141,17 +141,22 @@
     <!-- Fullscreen Project Modal -->
     <div id="project-modal" class="fixed inset-0 z-50 invisible opacity-0 flex items-end justify-center">
         <!-- Backdrop -->
-        <div class="absolute inset-0 bg-black/90 backdrop-blur-sm cursor-pointer" onclick="closeModal()"></div>
+        <div class="absolute inset-0 bg-black/95 cursor-pointer" onclick="closeModal()"></div>
         
         <!-- Modal Content Box -->
-        <div class="modal-content relative w-full h-[90vh] bg-surface rounded-t-3xl overflow-y-auto flex flex-col">
+        <div class="modal-content relative w-full h-[90vh] bg-surface rounded-t-3xl overflow-y-auto flex flex-col will-change-transform shadow-2xl">
             
             <!-- Modal Header (Sticky) -->
-            <div class="sticky top-0 bg-surface/90 backdrop-blur-md z-10 p-6 md:p-10 flex justify-between items-center border-b border-white/5">
-                <h3 id="modal-title" class="font-display font-bold text-2xl md:text-4xl">Project Title</h3>
-                <button onclick="closeModal()" class="hover-target w-12 h-12 bg-white/10 rounded-full flex items-center justify-center hover:bg-accent hover:text-black transition-colors">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                </button>
+            <div class="sticky top-0 bg-surface/95 z-10 p-6 md:p-10 flex justify-between items-center border-b border-white/5">
+              <h3 id="modal-title" class="font-display font-bold text-2xl md:text-4xl">Project Title</h3>
+              <button onclick="closeModal()"
+                class="hover-target w-12 h-12 bg-white/10 rounded-full flex items-center justify-center hover:bg-accent hover:text-black transition-colors">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </button>
             </div>
 
             <!-- Modal Body -->
